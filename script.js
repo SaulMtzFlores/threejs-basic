@@ -1,16 +1,16 @@
-// We need 3 things everytime we use Three.js
- // Scene + Camera + Renderer
+// Martínez Flores Saúl
+// COD: 215496568
 const scene = new THREE.Scene()
 const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 )
 const renderer = new THREE.WebGLRenderer({ antialias: true})
 
 renderer.setSize( window.innerWidth, window.innerHeight )
-// sets renderer background color
+// Color de fondo de pantalla.
 renderer.setClearColor("#222222")
 document.body.appendChild( renderer.domElement )
 camera.position.z = 5
 
-// resize canvas on resize window
+// Reajustar tamaños de canvas y pantalla
 window.addEventListener( 'resize', () => {
 	let width = window.innerWidth
 	let height = window.innerHeight
@@ -19,13 +19,13 @@ window.addEventListener( 'resize', () => {
 	camera.updateProjectionMatrix()
 })
 
-// basic cube
+// Cubo básico.
 var geometry = new THREE.BoxGeometry( 1, 1, 1)
 var material = new THREE.MeshStandardMaterial( { color: 0xff0051, flatShading: true, metalness: 0, roughness: 1 })
 var cube = new THREE.Mesh ( geometry, material )
 scene.add( cube )
 
-// wireframe cube
+// Cubo wireframe.
 var geometry = new THREE.BoxGeometry( 3, 3, 3)
 var material = new THREE.MeshBasicMaterial( {
 	color: "#dadada", wireframe: true, transparent: true
@@ -33,11 +33,11 @@ var material = new THREE.MeshBasicMaterial( {
 var wireframeCube = new THREE.Mesh ( geometry, material )
 scene.add( wireframeCube )
 
-// ambient light
+// Luz ambiental
 var ambientLight = new THREE.AmbientLight ( 0xffffff, 0.2)
 scene.add( ambientLight )
 
-// point light
+// Luz en punto.
 var pointLight = new THREE.PointLight( 0xffffff, 1 );
 pointLight.position.set( 25, 50, 25 );
 scene.add( pointLight );
